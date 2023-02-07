@@ -1,6 +1,5 @@
 package com.example.wallpapers.ui.fragment
 
-import android.annotation.SuppressLint
 import android.app.WallpaperManager
 import android.os.Build
 import android.os.Bundle
@@ -31,7 +30,6 @@ class FullScreenPictureFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("ResourceType")
     fun setWallpaper() {
         viewModel.viewModelScope.launch(Dispatchers.IO) {
             val wallpaperManager: WallpaperManager = WallpaperManager.getInstance(context)
