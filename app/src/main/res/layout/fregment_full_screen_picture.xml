@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            app:imageUrl="@{viewModel.picture.webformatURL}"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.picture.largeImageURL}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <Button
-            android:id="@+id/category_science_button"
+            android:id="@+id/set_wallpaper_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"

@@ -6,7 +6,8 @@ package com.example.wallpapers.network
  */
 data class WallpapersPicture(
     val id: String,
-    val webformatURL: String
+    val webformatURL: String,
+    val largeImageURL: String
 )
 
 data class Hits(
