@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Wallpapers</string>
+    <string name="category_nature">nature</string>
+    <string name="category_travel">travel</string>
+    <string name="category_health">health</string>
+    <string name="category_education">education</string>
+    <string name="category_science">science</string>
+    <string name="category_feelings">feelings</string>
+</resources>
