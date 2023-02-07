@@ -1,4 +1,4 @@
-package com.example.wallpapers
+package com.example.wallpapers.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpapers.databinding.GridViewItemBinding
+import com.example.wallpapers.network.WallpapersPicture
 
 /**
  * This class implements a [RecyclerView] [ListAdapter] which uses Data Binding to present [List]
  * data, including computing diffs between lists.
  */
-class PictureGridAdapter :
+class PictureGridAdapter(val clickListener: PictureListener) :
     ListAdapter<WallpapersPicture, PictureGridAdapter.PictureViewHolder>(DiffCallback) {
 
     /**
@@ -21,8 +22,9 @@ class PictureGridAdapter :
     class PictureViewHolder(
         private var binding: GridViewItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(wallpapersPicture: WallpapersPicture) {
+        fun bind(clickListener: PictureListener, wallpapersPicture: WallpapersPicture) {
             binding.picture = wallpapersPicture
+            binding.clickListener = clickListener
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()
@@ -34,11 +36,17 @@ class PictureGridAdapter :
      * [WallpapersPicture] has been updated.
      */
     companion object DiffCallback : DiffUtil.ItemCallback<WallpapersPicture>() {
-        override fun areItemsTheSame(oldItem: WallpapersPicture, newItem: WallpapersPicture): Boolean {
+        override fun areItemsTheSame(
+            oldItem: WallpapersPicture,
+            newItem: WallpapersPicture
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: WallpapersPicture, newItem: WallpapersPicture): Boolean {
+        override fun areContentsTheSame(
+            oldItem: WallpapersPicture,
+            newItem: WallpapersPicture
+        ): Boolean {
             return oldItem.webformatURL == newItem.webformatURL
         }
     }
@@ -60,6 +68,10 @@ class PictureGridAdapter :
      */
     override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
         val picture = getItem(position)
-        holder.bind(picture)
+        holder.bind(clickListener, picture)
     }
+}
+
+class PictureListener(val clickListener: (picture: WallpapersPicture) -> Unit) {
+    fun onClick(picture: WallpapersPicture) = clickListener(picture)
 }

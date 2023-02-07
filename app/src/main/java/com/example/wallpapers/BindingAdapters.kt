@@ -6,6 +6,9 @@ import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.wallpapers.network.WallpapersPicture
+import com.example.wallpapers.ui.adapter.PictureGridAdapter
+import com.example.wallpapers.ui.viewmodel.PictureApiStatus
 
 /**
  * Uses the Coil library to load an image by URL into an [ImageView]

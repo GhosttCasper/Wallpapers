@@ -1,18 +1,15 @@
 package com.example.wallpapers.network
 
-import com.example.wallpapers.Hits
-import com.example.wallpapers.WallpapersPicture
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
 private const val BASE_URL = "https://pixabay.com/api/"
-private const val KEY =
-    "?key=33106230-b104905cd7ff74ed17e2229af" //33106230-b104905cd7ff74ed17e2229af
 
 /**
  * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
@@ -23,8 +20,8 @@ private val moshi = Moshi.Builder()
     .build()
 
 private val client: OkHttpClient = OkHttpClient.Builder()
-    .readTimeout(300, TimeUnit.SECONDS)
-    .connectTimeout(300, TimeUnit.SECONDS)
+    .readTimeout(30, TimeUnit.SECONDS)
+    .connectTimeout(30, TimeUnit.SECONDS)
     .build()  // socket timeout
 
 /**
@@ -38,7 +35,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 /**
- * A public interface that exposes the [getPhotos] method
+ * A public interface that exposes the [getPictures] method
  */
 interface WallpapersApiService {
     /**
@@ -46,10 +43,8 @@ interface WallpapersApiService {
      * The @GET annotation indicates that the "KEY" endpoint will be requested with the GET
      * HTTP method
      */
-    //@GET(KEY)
-    //suspend fun getPictures(@Query("category") category: String): Hits
-    @GET("?key=33106230-b104905cd7ff74ed17e2229af&category=feelings")
-    suspend fun getPictures(): Hits
+    @GET("?key=33106230-b104905cd7ff74ed17e2229af")
+    suspend fun getPictures(@Query("category") category: String): Hits
 }
 
 /**

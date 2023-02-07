@@ -1,4 +1,4 @@
-package com.example.wallpapers
+package com.example.wallpapers.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.wallpapers.R
 import com.example.wallpapers.databinding.FragmentPicturesListBinding
+import com.example.wallpapers.ui.adapter.PictureGridAdapter
+import com.example.wallpapers.ui.adapter.PictureListener
+import com.example.wallpapers.ui.viewmodel.WallpapersViewModel
 
 class PicturesListFragment : Fragment() {
 
@@ -29,7 +34,10 @@ class PicturesListFragment : Fragment() {
         binding.viewModel = viewModel
 
         // Sets the adapter of the photosGrid RecyclerView
-        binding.photosGrid.adapter = PictureGridAdapter()
+        binding.photosGrid.adapter = PictureGridAdapter(PictureListener { picture ->
+            viewModel.onPictureClicked(picture)
+            findNavController().navigate(R.id.action_picturesListFragment_to_fullScreenPictureFragment)
+        })
 
         return binding.root
     }

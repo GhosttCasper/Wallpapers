@@ -7,14 +7,19 @@
 
         <variable
             name="picture"
-            type="com.example.wallpapers.WallpapersPicture" />
+            type="com.example.wallpapers.network.WallpapersPicture" />
+
+        <variable
+            name="clickListener"
+            type="com.example.wallpapers.ui.adapter.PictureListener" />
     </data>
 
     <ImageView
-        android:id="@+id/mars_image"
+        android:id="@+id/picture_image"
         android:layout_width="wrap_content"
         android:layout_height="170dp"
         android:adjustViewBounds="true"
+        android:onClick="@{() -> clickListener.onClick(picture)}"
         android:padding="2dp"
         android:scaleType="fitXY"
         app:imageUrl="@{picture.webformatURL}"

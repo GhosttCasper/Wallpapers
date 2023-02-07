@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.wallpapers.CategoriesFragment"
+        android:name="com.example.wallpapers.ui.fragment.CategoriesFragment"
         android:label="CategoriesFragment"
         tools:layout="@layout/fragment_categories">
         <action
@@ -16,7 +16,16 @@
     </fragment>
     <fragment
         android:id="@+id/picturesListFragment"
-        android:name="com.example.wallpapers.PicturesListFragment"
+        android:name="com.example.wallpapers.ui.fragment.PicturesListFragment"
         android:label="PicturesListFragment"
-        tools:layout="@layout/fragment_pictures_list" />
+        tools:layout="@layout/fragment_pictures_list">
+        <action
+            android:id="@+id/action_picturesListFragment_to_fullScreenPictureFragment"
+            app:destination="@id/fullScreenPictureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullScreenPictureFragment"
+        android:name="com.example.wallpapers.ui.fragment.FullScreenPictureFragment"
+        android:label="FullScreenPictureFragment"
+        tools:layout="@layout/fregment_full_screen_picture" />
 </navigation>

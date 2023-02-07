@@ -1,4 +1,4 @@
-package com.example.wallpapers
+package com.example.wallpapers.network
 
 /**
  * This data class defines a Picture which includes an ID, and the image URL.
