@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.wallpapers.R
 import com.example.wallpapers.databinding.FragmentCategoriesBinding
 import com.example.wallpapers.ui.viewmodel.WallpapersViewModel
+import java.util.*
 
 class CategoriesFragment : Fragment() {
 
@@ -24,27 +25,70 @@ class CategoriesFragment : Fragment() {
         {
             categoryFeelingsButton.setOnClickListener {
                 viewModel.getWallpapersPictures(getString(R.string.category_feelings))
-                findNavController().navigate(R.id.action_categoriesFragment_to_picturesListFragment)
+                val action =
+                    CategoriesFragmentDirections.actionCategoriesFragmentToPicturesListFragment(
+                        getString(R.string.category_feelings).replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(
+                                Locale.getDefault()
+                            ) else it.toString()
+                        })
+                findNavController().navigate(action)
             }
             categoryEducationButton.setOnClickListener {
                 viewModel.getWallpapersPictures(getString(R.string.category_education))
-                findNavController().navigate(R.id.action_categoriesFragment_to_picturesListFragment)
+                val action =
+                    CategoriesFragmentDirections.actionCategoriesFragmentToPicturesListFragment(
+                        getString(R.string.category_education)
+                    )
+                findNavController().navigate(action)
             }
             categoryHealthButton.setOnClickListener {
                 viewModel.getWallpapersPictures(getString(R.string.category_health))
-                findNavController().navigate(R.id.action_categoriesFragment_to_picturesListFragment)
+                val action =
+                    CategoriesFragmentDirections.actionCategoriesFragmentToPicturesListFragment(
+                        getString(R.string.category_health).replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(
+                                Locale.getDefault()
+                            ) else it.toString()
+                        }
+                    )
+                findNavController().navigate(action)
             }
             categoryNatureButton.setOnClickListener {
                 viewModel.getWallpapersPictures(getString(R.string.category_nature))
-                findNavController().navigate(R.id.action_categoriesFragment_to_picturesListFragment)
+                val action =
+                    CategoriesFragmentDirections.actionCategoriesFragmentToPicturesListFragment(
+                        getString(R.string.category_nature).replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(
+                                Locale.getDefault()
+                            ) else it.toString()
+                        }
+                    )
+                findNavController().navigate(action)
             }
             categoryScienceButton.setOnClickListener {
                 viewModel.getWallpapersPictures(getString(R.string.category_science))
-                findNavController().navigate(R.id.action_categoriesFragment_to_picturesListFragment)
+                val action =
+                    CategoriesFragmentDirections.actionCategoriesFragmentToPicturesListFragment(
+                        getString(R.string.category_science).replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(
+                                Locale.getDefault()
+                            ) else it.toString()
+                        }
+                    )
+                findNavController().navigate(action)
             }
             categoryTravelButton.setOnClickListener {
                 viewModel.getWallpapersPictures(getString(R.string.category_travel))
-                findNavController().navigate(R.id.action_categoriesFragment_to_picturesListFragment)
+                val action =
+                    CategoriesFragmentDirections.actionCategoriesFragmentToPicturesListFragment(
+                        getString(R.string.category_travel).replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(
+                                Locale.getDefault()
+                            ) else it.toString()
+                        }
+                    )
+                findNavController().navigate(action)
             }
         }
 

@@ -7,4 +7,6 @@
     <string name="category_science">science</string>
     <string name="category_feelings">feelings</string>
     <string name="set_wallpaper">set wallpaper</string>
+    <string name="categories_fragment_title">Wallpaper categories</string>
+    <string name="full_screen_picture_fragment_title">Full-Screen Picture</string>
 </resources>

@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.viewModelScope
-import com.example.wallpapers.databinding.FregmentFullScreenPictureBinding
+import com.example.wallpapers.databinding.FragmentFullScreenPictureBinding
 import com.example.wallpapers.ui.viewmodel.WallpapersViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,11 +24,18 @@ class FullScreenPictureFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FregmentFullScreenPictureBinding.inflate(inflater)
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+
+        val binding = FragmentFullScreenPictureBinding.inflate(inflater)
         binding.viewModel = viewModel
         binding.setWallpaperButton.setOnClickListener { setWallpaper() }
 
         return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
     }
 
     fun setWallpaper() {
